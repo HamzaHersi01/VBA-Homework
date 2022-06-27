@@ -1,0 +1,42 @@
+Sub stockAnlysis()
+Dim y_open As Double
+Dim y_close  As Double
+Dim y_high As Double
+Dim y_low As Double
+Dim y_change As Double
+'Dim y_change2 As Double'
+Dim ticker As String
+Dim percent_change As Double
+Dim vol As LongLong
+Cells(1, 9).Value = ("Ticker")
+Cells(1, 10).Value = ("Yearly Change")
+Cells(1, 11).Value = ("Percent Change")
+Cells(1, 12).Value = ("Volume")
+
+
+
+
+
+For i = 2 To 800000
+'gets ticker from first column then puts it in 9th column'
+ticker = Cells(i, 1).Value
+Cells(i, 9).Value = ticker
+
+y_open = Cells(i, 3).Value
+y_close = Cells(i, 6).Value
+y_change = y_open - y_close
+y_change = -1 * y_change
+Cells(i, 10).Value = y_change
+
+'y_change2 = y_close - y_open'
+percent_change = y_close - y_open
+percent_change = percent_change / y_open
+percent_change = percent_change * 100
+Cells(i, 11).Value = (percent_change & "%")
+
+vol = Cells(i, 7).Value
+Cells(i, 12).Value = vol
+Next i
+
+End Sub
+
